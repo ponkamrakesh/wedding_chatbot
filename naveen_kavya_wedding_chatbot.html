@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naveen & Kavya Wedding 💍</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Cinzel:wght@400;600;700&family=Nunito:wght@300;400;600&family=Noto+Sans+Telugu:wght@300;400;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --rose: #c0415a;
+      --rose-dk: #8b1a30;
+      --gold: #c9943a;
+      --gold-lt: #f0c96e;
+      --ink: #1e0a0e;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--ink);
+      color: var(--ink);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 320px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding-bottom: 36px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?w=900&auto=format&fit=crop&q=80');
+      background-size: cover;
+      background-position: center 30%;
+      filter: brightness(0.30) saturate(1.2);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(30, 10, 14, 0.0) 0%, rgba(139, 26, 48, 0.2) 50%, rgba(30, 10, 14, 0.97) 100%);
+    }
+
+    .petal {
+      position: absolute;
+      border-radius: 60% 10% 60% 10%;
+      opacity: 0;
+      animation: fall linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-20px) rotate(0deg);
+        opacity: 0.85;
+      }
+
+      100% {
+        transform: translateY(400px) rotate(420deg);
+        opacity: 0;
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .hero-sub {
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: 5px;
+      color: var(--gold-lt);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      opacity: 0.85;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(40px, 12vw, 64px);
+      font-weight: 300;
+      color: #fff;
+      line-height: 1.05;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-lt);
+    }
+
+    .hero-div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin: 10px 0 8px;
+      color: var(--gold);
+      font-size: 18px;
+    }
+
+    .hero-div::before,
+    .hero-div::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 55px;
+    }
+
+    .hero-div::before {
+      background: linear-gradient(to right, transparent, var(--gold));
+    }
+
+    .hero-div::after {
+      background: linear-gradient(to left, transparent, var(--gold));
+    }
+
+    .hero-date {
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      color: var(--gold-lt);
+      letter-spacing: 3px;
+    }
+
+    /* Warm invite in hero */
+    .hero-invite {
+      margin-top: 14px;
+      background: rgba(201, 148, 58, 0.13);
+      border: 1px solid rgba(240, 201, 110, 0.35);
+      border-radius: 14px;
+      padding: 10px 18px;
+      max-width: 320px;
+      text-align: center;
+    }
+
+    .hero-invite .en {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 14px;
+      color: #fff;
+      line-height: 1.5;
+    }
+
+    .hero-invite .te {
+      font-family: 'Noto Sans Telugu', sans-serif;
+      font-size: 13px;
+      color: var(--gold-lt);
+      margin-top: 5px;
+      line-height: 1.6;
+    }
+
+    /* ── MAIN ── */
+    .main {
+      background: linear-gradient(160deg, #fdf0e8 0%, #fdf6ed 60%, #f9e8e8 100%);
+      border-radius: 28px 28px 0 0;
+      margin-top: -20px;
+      position: relative;
+      z-index: 3;
+      padding: 26px 14px 36px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* INFO CARDS */
+    .cards-row {
+      display: flex;
+      gap: 10px;
+      width: 100%;
+      max-width: 540px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .info-card {
+      flex: 1 1 140px;
+      min-width: 130px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 14px 12px;
+      text-align: center;
+      box-shadow: 0 4px 18px rgba(192, 65, 90, 0.1);
+      border: 1px solid rgba(201, 148, 58, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .info-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--rose), var(--gold));
+    }
+
+    .ic-icon {
+      font-size: 22px;
+      margin-bottom: 5px;
+    }
+
+    .ic-label {
+      font-family: 'Cinzel', serif;
+      font-size: 8.5px;
+      letter-spacing: 2px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+
+    .ic-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--rose-dk);
+      line-height: 1.3;
+    }
+
+    .ic-tel {
+      font-family: 'Noto Sans Telugu', sans-serif;
+      font-size: 11px;
+      color: #a07050;
+      margin-top: 3px;
+      line-height: 1.4;
+    }
+
+    /* QUICK BUTTONS */
+    .qbtns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      justify-content: center;
+      max-width: 540px;
+      width: 100%;
+      margin-bottom: 16px;
+    }
+
+    .qbtn {
+      background: #fff;
+      border: 1.5px solid rgba(192, 65, 90, 0.3);
+      color: var(--rose-dk);
+      border-radius: 20px;
+      padding: 7px 14px;
+      font-size: 12px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 2px 8px rgba(192, 65, 90, 0.08);
+    }
+
+    .qbtn:hover,
+    .qbtn:active {
+      background: var(--rose);
+      color: #fff;
+      border-color: var(--rose);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(192, 65, 90, 0.28);
+    }
+
+    /* CHAT */
+    .chat-section {
+      width: 100%;
+      max-width: 540px;
+    }
+
+    .chat-box {
+      background: #fff;
+      border-radius: 20px;
+      min-height: 300px;
+      max-height: 460px;
+      overflow-y: auto;
+      padding: 18px 14px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: 0 6px 28px rgba(192, 65, 90, 0.1);
+      border: 1px solid rgba(201, 148, 58, 0.15);
+      scroll-behavior: smooth;
+    }
+
+    .chat-box::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .chat-box::-webkit-scrollbar-thumb {
+      background: rgba(192, 65, 90, 0.25);
+      border-radius: 4px;
+    }
+
+    .msg {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      animation: popIn 0.3s cubic-bezier(.34, 1.56, .64, 1);
+    }
+
+    @keyframes popIn {
+      from {
+        opacity: 0;
+        transform: scale(0.88) translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .msg.user {
+      flex-direction: row-reverse;
+    }
+
+    .av {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .msg.bot .av {
+      background: linear-gradient(135deg, var(--rose-dk), var(--gold));
+    }
+
+    .msg.user .av {
+      background: linear-gradient(135deg, #ccc, #aaa);
+    }
+
+    .bubble {
+      max-width: 82%;
+      padding: 11px 15px;
+      border-radius: 18px;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .msg.bot .bubble {
+      background: linear-gradient(135deg, #fff5f0, #fff9f5);
+      color: var(--ink);
+      border-bottom-left-radius: 4px;
+      border: 1px solid rgba(201, 148, 58, 0.2);
+      box-shadow: 0 2px 10px rgba(192, 65, 90, 0.08);
+    }
+
+    .msg.user .bubble {
+      background: linear-gradient(135deg, var(--rose-dk), var(--rose));
+      color: #fff;
+      border-bottom-right-radius: 4px;
+      box-shadow: 0 2px 10px rgba(192, 65, 90, 0.3);
+    }
+
+    .bubble strong {
+      color: var(--rose-dk);
+    }
+
+    .msg.user .bubble strong {
+      color: #ffd9d9;
+    }
+
+    .bubble .tag {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--rose), var(--gold));
+      color: #fff;
+      border-radius: 10px;
+      padding: 2px 10px;
+      font-size: 11px;
+      font-weight: 700;
+      margin: 2px 2px 0 0;
+    }
+
+    .bubble ul {
+      margin: 5px 0 0 16px;
+    }
+
+    .bubble ul li {
+      margin-bottom: 3px;
+    }
+
+    .bubble a {
+      color: var(--rose);
+      font-weight: 700;
+    }
+
+    /* bilingual divider inside bubble */
+    .lang-sep {
+      display: block;
+      border: none;
+      border-top: 1px dashed rgba(192, 65, 90, 0.25);
+      margin: 8px 0;
+    }
+
+    .te-block {
+      font-family: 'Noto Sans Telugu', sans-serif;
+      font-size: 12.5px;
+      color: #6b1a28;
+      line-height: 1.75;
+    }
+
+    .te-block strong {
+      color: var(--rose-dk);
+    }
+
+    .te-block ul {
+      margin: 5px 0 0 16px;
+    }
+
+    .te-block ul li {
+      margin-bottom: 3px;
+    }
+
+    .typing {
+      display: flex;
+      gap: 5px;
+      padding: 4px 0;
+      align-items: center;
+    }
+
+    .typing span {
+      width: 8px;
+      height: 8px;
+      background: var(--rose);
+      border-radius: 50%;
+      animation: bounce 1.3s infinite;
+    }
+
+    .typing span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .typing span:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      60%,
+      100% {
+        transform: translateY(0);
+        opacity: 0.4;
+      }
+
+      30% {
+        transform: translateY(-7px);
+        opacity: 1;
+      }
+    }
+
+    /* INPUT */
+    .input-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .input-row input {
+      flex: 1;
+      border: 2px solid rgba(192, 65, 90, 0.2);
+      border-radius: 24px;
+      padding: 12px 18px;
+      font-size: 14px;
+      background: #fff;
+      color: var(--ink);
+      font-family: 'Nunito', sans-serif;
+      outline: none;
+      box-shadow: 0 2px 10px rgba(192, 65, 90, 0.07);
+      transition: border 0.2s, box-shadow 0.2s;
+    }
+
+    .input-row input:focus {
+      border-color: var(--rose);
+      box-shadow: 0 2px 14px rgba(192, 65, 90, 0.18);
+    }
+
+    .input-row input::placeholder {
+      color: #c0a898;
+    }
+
+    .send-btn {
+      background: linear-gradient(135deg, var(--rose-dk), var(--rose));
+      border: none;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      cursor: pointer;
+      font-size: 19px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 14px rgba(192, 65, 90, 0.4);
+      transition: transform 0.15s, box-shadow 0.15s;
+      flex-shrink: 0;
+    }
+
+    .send-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(192, 65, 90, 0.5);
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.28);
+      letter-spacing: 1.5px;
+      padding-bottom: 14px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div id="petals"></div>
+    <div class="hero-content">
+      <div class="hero-sub">✦ Batthala Family's Wedding Invitation ✦</div>
+      <div class="hero-div">🌸</div>
+      <h1><em>Naveen</em> &amp; <em>Kavya</em></h1>
+      <div class="hero-div">💍</div>
+      <div class="hero-date">Saturday · 9th May 2026</div>
+      <div class="hero-invite">
+        <div class="en">Please come with your family &amp; bless us with your gracious presence 🙏</div>
+        <div class="te">మీరు మీ కుటుంబంతో వచ్చి మాకు ఆశీర్వాదం అందించగలరని మనస్పూర్తిగా కోరుకుంటున్నాము 🙏</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <div class="cards-row reveal">
+      <div class="info-card">
+        <div class="ic-icon">⏰</div>
+        <div class="ic-label">Muhurtham</div>
+        <div class="ic-val">7:35 – 9:35 AM</div>
+        <div class="ic-tel">సుముహూర్తం</div>
+      </div>
+      <div class="info-card">
+        <div class="ic-icon">📍</div>
+        <div class="ic-label">Venue</div>
+        <div class="ic-val">MKR Convention Hall</div>
+        <div class="ic-tel">కళ్యాణ వేదిక</div>
+      </div>
+      <div class="info-card">
+        <div class="ic-icon">🍽️</div>
+        <div class="ic-label">Breakfast</div>
+        <div class="ic-val">From 8:00 AM</div>
+        <div class="ic-tel">అల్పాహారం</div>
+      </div>
+    </div>
+
+    <div class="qbtns reveal">
+      <button class="qbtn" onclick="ask('When is the wedding?')">📅 Date &amp; Time</button>
+      <button class="qbtn" onclick="ask('Where is the venue?')">📍 Venue</button>
+      <button class="qbtn" onclick="ask('What is the breakfast menu?')">🍽️ Breakfast Menu</button>
+      <button class="qbtn" onclick="ask('What are all the events?')">📋 All Events</button>
+      <button class="qbtn" onclick="ask('Nalugu details')">🌿 Nalugu</button>
+      <button class="qbtn" onclick="ask('How to reach the venue?')">🗺️ Directions</button>
+      <button class="qbtn" onclick="ask('Who are the bride and groom?')">💑 Couple</button>
+      <button class="qbtn" onclick="ask('Contact details')">📞 Contacts</button>
+    </div>
+
+    <div class="chat-section reveal">
+      <div class="chat-box" id="chatBox"></div>
+      <div class="input-row">
+        <input type="text" id="userInput" placeholder="Ask anything… ఏదైనా అడగండి 💬"
+          onkeydown="if(event.key==='Enter') sendMsg()">
+        <button class="send-btn" onclick="sendMsg()">➤</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">Made with ❤️ for Naveen &amp; Kavya · 9th May 2026</div>
+
+  <script>
+    /* Floating petals */
+    const petalColors = ['#f9a8b8', '#fcd5a0', '#f6e0b5', '#e8b4c8', '#fddde6'];
+    const pc = document.getElementById('petals');
+    for (let i = 0; i < 20; i++) {
+      const p = document.createElement('div');
+      p.className = 'petal';
+      const sz = 8 + Math.random() * 9;
+      p.style.cssText = `left:${Math.random() * 100}%;top:${Math.random() * 100}%;
+    background:${petalColors[Math.floor(Math.random() * petalColors.length)]};
+    width:${sz}px;height:${sz * 1.3}px;
+    animation-duration:${4 + Math.random() * 6}s;
+    animation-delay:${Math.random() * 7}s;
+    transform:rotate(${Math.random() * 360}deg);`;
+      pc.appendChild(p);
+    }
+
+    /* Scroll reveal */
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    /* Helper: wrap bilingual reply */
+    function bi(en, te) {
+      return `${en}<hr class="lang-sep"><div class="te-block">${te}</div>`;
+    }
+
+    /* Knowledge base */
+    const MENU_EN = {
+      tiffins: ["Sweet Pongal", "Idli", "Medu Vada", "Pongal", "Dosa (5 varieties)", "Puri"],
+      sides: ["Verusanagapappu Chutney", "Sambar", "Karam Pulusu", "Errakaaram", "Aloo Curry", "Ginger Chutney"],
+      drinks: ["Tea (Live)", "Coffee (Live)", "Fruit Salad", "Fresh Juices – Watermelon, Grape, Pineapple"]
+    };
+    const MENU_TE = {
+      tiffins: ["స్వీటు పొంగలి", "ఇడ్లీ", "మెదువడ", "పొంగరి", "దోశ (5 రకాలు)", "పూరీ"],
+      sides: ["వేరుశనగపప్పు చట్నీ", "సాంబారు", "కారం పులుసు", "ఎర్రకారం", "అలుకర్ర", "అల్లం చట్నీ"],
+      drinks: ["టీ (లైవ్)", "కాఫీ (లైవ్)", "ఫ్రూట్ సలాడ్", "జ్యూస్ – వాటర్‌మెలన్, ద్రాక్ష, పైనాపిల్"]
+    };
+
+    function getReply(msg) {
+      const m = msg.toLowerCase();
+
+      if (m.match(/who|bride|groom|couple|naveen|kavya|family/))
+        return bi(
+          `<strong>💑 The Couple</strong><br><br>
+<span class="tag">Groom</span> <strong>Naveen</strong>, B.Tech.<br>
+Son of <em>Batthala Tirupataiah &amp; Lakshmi Samrajyam</em><br>
+Bodagudipadu Village, Dagadarthi Mandal, Nellore Dist.<br><br>
+<span class="tag">Bride</span> <strong>Kavya</strong>, B.Tech.<br>
+Daughter of <em>Sri Gilaka Venkateswarlu &amp; Smt. Sujatha</em><br>
+Iskapalli Village, Alluru Mandal, Nellore Dist.`,
+          `<strong>💑 వివాహ జంట</strong><br><br>
+<span class="tag">వరుడు</span> <strong>నవీన్</strong>, B.Tech.<br>
+బత్తల తిరుపతయ్య & లక్ష్మీసామ్రాజ్యం కుమారుడు<br>
+బోడగుడిపాడు గ్రామం, దగదర్తి మండలం, నెల్లూరు జిల్లా<br><br>
+<span class="tag">వధువు</span> <strong>కావ్య</strong>, B.Tech.<br>
+శ్రీ గిలక వెంకటేశ్వర్లు & శ్రీమతి సుజాత కుమార్తె<br>
+ఇస్కపల్లి గ్రామం, అల్లూరు మండలం, నెల్లూరు జిల్లా`
+        );
+
+      if (m.match(/when|date|time|muhu?rt|sumuh|satur|may 9|may9/))
+        return bi(
+          `<strong>📅 Wedding Date &amp; Muhurtham</strong><br><br>
+<span class="tag">Saturday, 9th May 2026</span><br><br>
+🕖 <strong>Sumuhurtham:</strong> 7:35 AM – 9:35 AM<br>
+⭐ <strong>Pushkarakalam:</strong> 8:25 AM – 8:29 AM<br>
+🌙 <em>Sravana Nakshatram, Midhuna Lagna Pushkaramsam</em>`,
+          `<strong>📅 వివాహ తేదీ & సుముహూర్తం</strong><br><br>
+<span class="tag">శనివారం, 9 మే 2026</span><br><br>
+🕖 <strong>సుముహూర్తం:</strong> ఉదయం 7:35 – 9:35<br>
+⭐ <strong>పుష్కరాలకం:</strong> ఉదయం 8:25 – 8:29<br>
+🌙 <em>శ్రవణ నక్షత్రం, మిథున లగ్న పుష్కరాంసం</em>`
+        );
+
+      if (m.match(/venue|hall|where|mkr|convention|musunuru|kavali|address/))
+        return bi(
+          `<strong>📍 Wedding Venue (May 9th)</strong><br><br>
+<span class="tag">MKR Convention Hall</span><br>
+Near Bypass Junction, Musunuru – Kavali<br><br>
+📞 8885279718 / 7672069943<br><br>
+<em>Both Breakfast &amp; Sumuhurtham are here on May 9th.</em>`,
+          `<strong>📍 కళ్యాణ వేదిక (మే 9)</strong><br><br>
+<span class="tag">MKR కన్వెన్షన్ హాల్</span><br>
+బైపాస్ జంక్షన్ దగ్గర, మూసూరు – కావలి<br><br>
+📞 8885279718 / 7672069943<br><br>
+<em>అల్పాహారం & సుముహూర్తం రెండూ ఇక్కడే జరుగుతాయి.</em>`
+        );
+
+      if (m.match(/nalugu|haldi|may 8|friday/))
+        return bi(
+          `<strong>🌿 Nalugu (Haldi) Ceremony</strong><br><br>
+<span class="tag">Friday, 8th May 2026</span><br><br>
+🕙 <strong>Time:</strong> 10:00 AM onwards<br>
+📍 <strong>Venue:</strong> Batthala Family Residence<br>
+Bodagudipadu Village, Dagadarthi Mandal, Nellore Dist.<br><br>
+🍛 Lunch follows at 12:00 Noon at the same venue.<br><br>
+<em>Please come with your family &amp; bless the couple! 🙏</em>`,
+          `<strong>🌿 నలుగు వేడుక</strong><br><br>
+<span class="tag">శుక్రవారం, 8 మే 2026</span><br><br>
+🕙 <strong>సమయం:</strong> ఉదయం 10:00 గంటల నుండి<br>
+📍 <strong>వేదిక:</strong> బత్తల కుటుంబ నివాసం<br>
+బోడగుడిపాడు గ్రామం, దగదర్తి మండలం, నెల్లూరు జిల్లా<br><br>
+🍛 భోజనం మధ్యాహ్నం 12:00 గంటలకు అదే ప్రదేశంలో<br><br>
+<em>మీ కుటుంబంతో వచ్చి ఆశీర్వదించగలరు 🙏</em>`
+        );
+
+      if (m.match(/breakfast|menu|food|eat|tiffin|dosa|idli|pongal|snack|item|catering/))
+        return bi(
+          `<strong>🍽️ Breakfast Menu</strong> (8:00 AM onwards)<br>
+<em>By LBR Catering – Spicy of Yegur</em><br><br>
+<strong>Tiffins:</strong>
+<ul>${MENU_EN.tiffins.map(t => `<li>${t}</li>`).join('')}</ul><br>
+<strong>Sides &amp; Chutneys:</strong>
+<ul>${MENU_EN.sides.map(s => `<li>${s}</li>`).join('')}</ul><br>
+<strong>Beverages:</strong>
+<ul>${MENU_EN.drinks.map(d => `<li>${d}</li>`).join('')}</ul>`,
+          `<strong>🍽️ అల్పాహారం మెనూ</strong> (ఉదయం 8:00 నుండి)<br>
+<em>LBR క్యాటరింగ్ – స్పైసీ ఆఫ్ యేగూర్</em><br><br>
+<strong>టిఫిన్లు:</strong>
+<ul>${MENU_TE.tiffins.map(t => `<li>${t}</li>`).join('')}</ul><br>
+<strong>కూరలు & చట్నీలు:</strong>
+<ul>${MENU_TE.sides.map(s => `<li>${s}</li>`).join('')}</ul><br>
+<strong>పానీయాలు:</strong>
+<ul>${MENU_TE.drinks.map(d => `<li>${d}</li>`).join('')}</ul>`
+        );
+
+      if (m.match(/event|program|schedule|all|ceremony|function|itinerary|lunch/))
+        return bi(
+          `<strong>📋 Complete Events Schedule</strong><br><br>
+<span class="tag">Friday · 8th May 2026</span><br>
+🌿 <strong>Nalugu (Haldi)</strong> — 10:00 AM onwards<br>
+📍 Batthala Residence, Bodagudipadu Village<br><br>
+🍛 <strong>Lunch</strong> — 12:00 Noon onwards<br>
+📍 Batthala Residence, Bodagudipadu Village<br><br>
+<span class="tag">Saturday · 9th May 2026</span><br>
+💍 <strong>Sumuhurtham</strong> — 7:35 AM – 9:35 AM<br>
+📍 MKR Convention Hall, Musunuru–Kavali<br><br>
+🍽️ <strong>Breakfast</strong> — 8:00 AM onwards<br>
+📍 MKR Convention Hall, Musunuru–Kavali`,
+          `<strong>📋 కార్యక్రమాల వేళాపట్టీ</strong><br><br>
+<span class="tag">శుక్రవారం · 8 మే 2026</span><br>
+🌿 <strong>నలుగు వేడుక</strong> — ఉదయం 10:00 నుండి<br>
+📍 బత్తల నివాసం, బోడగుడిపాడు గ్రామం<br><br>
+🍛 <strong>భోజనం</strong> — మధ్యాహ్నం 12:00 నుండి<br>
+📍 బత్తల నివాసం, బోడగుడిపాడు గ్రామం<br><br>
+<span class="tag">శనివారం · 9 మే 2026</span><br>
+💍 <strong>సుముహూర్తం</strong> — ఉదయం 7:35 – 9:35<br>
+📍 MKR కన్వెన్షన్ హాల్, మూసూరు–కావలి<br><br>
+🍽️ <strong>అల్పాహారం</strong> — ఉదయం 8:00 నుండి<br>
+📍 MKR కన్వెన్షన్ హాల్, మూసూరు–కావలి`
+        );
+
+      if (m.match(/locat|map|reach|direction|qr|scan|navigate|how to/))
+        return bi(
+          `<strong>🗺️ How to Reach</strong><br><br>
+<strong>May 9 – Wedding &amp; Breakfast:</strong><br>
+MKR Convention Hall, Near Bypass Junction, Musunuru–Kavali<br>
+📱 <a href="https://maps.google.com/?q=MKR+Convention+Hall+Musunuru+Kavali" target="_blank">Open in Google Maps →</a><br><br>
+<strong>May 8 – Nalugu &amp; Lunch:</strong><br>
+Bodagudipadu Village, Dagadarthi Mandal, Nellore Dist.<br><br>
+📞 Help: 8885279718 / 7672069943`,
+          `<strong>🗺️ ఎలా చేరుకోవాలి</strong><br><br>
+<strong>మే 9 – వివాహం & అల్పాహారం:</strong><br>
+MKR కన్వెన్షన్ హాల్, బైపాస్ జంక్షన్ దగ్గర, మూసూరు–కావలి<br>
+📱 <a href="https://maps.google.com/?q=MKR+Convention+Hall+Musunuru+Kavali" target="_blank">గూగుల్ మ్యాప్స్ తెరవండి →</a><br><br>
+<strong>మే 8 – నలుగు & భోజనం:</strong><br>
+బోడగుడిపాడు గ్రామం, దగదర్తి మండలం, నెల్లూరు జిల్లా<br><br>
+📞 సహాయం: 8885279718 / 7672069943`
+        );
+
+      if (m.match(/contact|phone|call|number/))
+        return bi(
+          `<strong>📞 Contact Details</strong><br><br>
+🏠 <strong>Batthala Family:</strong> 8885279718 · 7672069943<br><br>
+🍴 <strong>LBR Catering:</strong> 94917 77437 · 97007 62344`,
+          `<strong>📞 సంప్రదింపు వివరాలు</strong><br><br>
+🏠 <strong>బత్తల కుటుంబం:</strong> 8885279718 · 7672069943<br><br>
+🍴 <strong>LBR క్యాటరింగ్:</strong> 94917 77437 · 97007 62344`
+        );
+
+      if (m.match(/hello|hi |hey|good|welcome|namaste|నమస్కారం/))
+        return bi(
+          `నమస్తే! 🙏 Welcome to <strong>Naveen &amp; Kavya's Wedding Chatbot!</strong><br><br>
+Tap any button above or type your question — I'm happy to help! 💍`,
+          `నమస్తే! 🙏 <strong>నవీన్ & కావ్య వివాహ చాట్‌బాట్‌కు</strong> స్వాగతం!<br><br>
+పైన ఉన్న బటన్లను నొక్కండి లేదా మీ ప్రశ్న టైప్ చేయండి 💍`
+        );
+
+      return bi(
+        `Hmm, I'm not sure about that 😊 Try asking about:<br><br>
+<span class="tag">📅 Timings</span> <span class="tag">📍 Venue</span> <span class="tag">🍽️ Food</span> <span class="tag">📋 Events</span> <span class="tag">🗺️ Directions</span>`,
+        `అర్థం కాలేదు 😊 ఇవి అడగండి:<br><br>
+<span class="tag">📅 సమయాలు</span> <span class="tag">📍 వేదిక</span> <span class="tag">🍽️ మెనూ</span> <span class="tag">📋 కార్యక్రమాలు</span> <span class="tag">🗺️ దారి</span>`
+      );
+    }
+
+    function addMsg(html, who) {
+      const box = document.getElementById('chatBox');
+      const div = document.createElement('div');
+      div.className = `msg ${who}`;
+      div.innerHTML = `<div class="av">${who === 'bot' ? '💍' : '🙂'}</div><div class="bubble">${html}</div>`;
+      box.appendChild(div);
+      box.scrollTop = box.scrollHeight;
+    }
+    function showTyping() {
+      const box = document.getElementById('chatBox');
+      const d = document.createElement('div');
+      d.className = 'msg bot'; d.id = 'typing';
+      d.innerHTML = `<div class="av">💍</div><div class="bubble"><div class="typing"><span></span><span></span><span></span></div></div>`;
+      box.appendChild(d); box.scrollTop = box.scrollHeight;
+    }
+    function hideTyping() { const t = document.getElementById('typing'); if (t) t.remove(); }
+
+    function ask(q) { document.getElementById('userInput').value = q; sendMsg(); }
+    function sendMsg() {
+      const inp = document.getElementById('userInput');
+      const txt = inp.value.trim(); if (!txt) return;
+      inp.value = '';
+      addMsg(txt, 'user'); showTyping();
+      setTimeout(() => { hideTyping(); addMsg(getReply(txt), 'bot'); }, 650 + Math.random() * 350);
+    }
+
+    /* Welcome message */
+    setTimeout(() => {
+      addMsg(bi(
+        `నమస్తే! 🙏 Welcome to <strong>Naveen &amp; Kavya's Wedding!</strong><br><br>
+💍 <strong>9th May 2026</strong> — MKR Convention Hall, Musunuru–Kavali<br>
+🌿 <strong>Nalugu on 8th May</strong> — Bodagudipadu Village (Residence)<br><br>
+We warmly invite you to come with your family &amp; bless the couple! 🌸<br><br>
+Ask me anything — tap a button above or type below 👇`,
+        `నమస్తే! 🙏 <strong>నవీన్ & కావ్య వివాహానికి</strong> స్వాగతం!<br><br>
+💍 <strong>9 మే 2026</strong> — MKR కన్వెన్షన్ హాల్, మూసూరు–కావలి<br>
+🌿 <strong>నలుగు 8 మే</strong> — బోడగుడిపాడు గ్రామం (నివాసం)<br><br>
+మీరు మీ కుటుంబంతో వచ్చి ఈ శుభకార్యంలో పాల్గొని ఆశీర్వదించగలరని విన్నవించుకుంటున్నాం 🌸<br><br>
+పైన బటన్లు నొక్కండి లేదా క్రింద టైప్ చేయండి 👇`
+      ), 'bot');
+    }, 600);
+  </script>
+</body>
+
+</html>
