@@ -674,6 +674,24 @@ Iskapalli Village, Alluru Mandal, Nellore Dist.`,
 ఇస్కపల్లి గ్రామం, అల్లూరు మండలం, నెల్లూరు జిల్లా`
         );
 
+      if (m.match(/nalugu|haldi|may 8|friday/))
+        return bi(
+          `<strong>🌿 Nalugu (Haldi) Ceremony</strong><br><br>
+<span class="tag">Friday, 8th May 2026</span><br><br>
+🕙 <strong>Time:</strong> 10:00 AM onwards<br>
+📍 <strong>Venue:</strong> Batthala Family Residence<br>
+Bodagudipadu Village, Dagadarthi Mandal, Nellore Dist.<br><br>
+🍛 Lunch follows at 12:00 Noon at the same venue.<br><br>
+<em>Please come with your family &amp; bless the couple! 🙏</em>`,
+          `<strong>🌿 నలుగు వేడుక</strong><br><br>
+<span class="tag">శుక్రవారం, 8 మే 2026</span><br><br>
+🕙 <strong>సమయం:</strong> ఉదయం 10:00 గంటల నుండి<br>
+📍 <strong>వేదిక:</strong> బత్తల కుటుంబ నివాసం<br>
+బోడగుడిపాడు గ్రామం, దగదర్తి మండలం, నెల్లూరు జిల్లా<br><br>
+🍛 భోజనం మధ్యాహ్నం 12:00 గంటలకు అదే ప్రదేశంలో<br><br>
+<em>మీ కుటుంబంతో వచ్చి ఆశీర్వదించగలరు 🙏</em>`
+        );
+
       if (m.match(/when|date|time|muhu?rt|sumuh|satur|may 9|may9/))
         return bi(
           `<strong>📅 Wedding Date &amp; Muhurtham</strong><br><br>
@@ -702,23 +720,7 @@ Near Bypass Junction, Musunuru – Kavali<br><br>
 <em>అల్పాహారం & సుముహూర్తం రెండూ ఇక్కడే జరుగుతాయి.</em>`
         );
 
-      if (m.match(/nalugu|haldi|may 8|friday/))
-        return bi(
-          `<strong>🌿 Nalugu (Haldi) Ceremony</strong><br><br>
-<span class="tag">Friday, 8th May 2026</span><br><br>
-🕙 <strong>Time:</strong> 10:00 AM onwards<br>
-📍 <strong>Venue:</strong> Batthala Family Residence<br>
-Bodagudipadu Village, Dagadarthi Mandal, Nellore Dist.<br><br>
-🍛 Lunch follows at 12:00 Noon at the same venue.<br><br>
-<em>Please come with your family &amp; bless the couple! 🙏</em>`,
-          `<strong>🌿 నలుగు వేడుక</strong><br><br>
-<span class="tag">శుక్రవారం, 8 మే 2026</span><br><br>
-🕙 <strong>సమయం:</strong> ఉదయం 10:00 గంటల నుండి<br>
-📍 <strong>వేదిక:</strong> బత్తల కుటుంబ నివాసం<br>
-బోడగుడిపాడు గ్రామం, దగదర్తి మండలం, నెల్లూరు జిల్లా<br><br>
-🍛 భోజనం మధ్యాహ్నం 12:00 గంటలకు అదే ప్రదేశంలో<br><br>
-<em>మీ కుటుంబంతో వచ్చి ఆశీర్వదించగలరు 🙏</em>`
-        );
+      
 
       if (m.match(/breakfast|menu|food|eat|tiffin|dosa|idli|pongal|snack|item|catering/))
         return bi(
